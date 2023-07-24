@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule as NestTypeOrmModule } from '@nestjs/typeorm';
 
+console.log(process.env.POSTGRES_DATABASE);
 @Module({
   imports: [
     NestTypeOrmModule.forRoot({

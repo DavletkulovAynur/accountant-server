@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-  db:
+  db_postgres:
     container_name: db_postgres
     image: postgres:14
     environment:
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: test
+      POSTGRES_USER: accountant
+      POSTGRES_PASSWORD: root
       PGDATA: /data/postgres
     restart: always
     networks:
@@ -24,7 +24,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-      - pgadmin:/var/www/accountant/docker-valumes/pgadmin
+      - pgadmin:/var/www/accountant/docker-volumes/pgadmin
     ports:
       - 127.0.0.1:5050:80
     networks:
