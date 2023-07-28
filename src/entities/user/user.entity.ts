@@ -13,15 +13,15 @@ export class User {
   @Column({ name: 'password', type: 'varchar', nullable: true })
   password: string;
 
-  // @Column({ name: 'name_first', type: 'varchar', nullable: true })
-  // nameFirst: string;
+  @Column({ name: 'name_first', type: 'varchar', nullable: true })
+  nameFirst: string;
 
-  // @Column({ name: 'name_last', type: 'varchar', nullable: true })
-  // nameLast: string;
+  @Column({ name: 'name_last', type: 'varchar', nullable: true })
+  nameLast: string;
 
-  // @Column({ name: 'birth_date', type: 'timestamp', nullable: true })
-  // birthDate: Date;
+  @Column({ name: 'birth_date', type: 'timestamp', nullable: true })
+  birthDate: Date;
 
-  // @Column({ name: 'gender', type: 'enum', enum: E_Gender, nullable: true })
-  // gender: E_Gender | null;
+  @Column({ name: 'gender', type: 'enum', enum: E_Gender, nullable: true })
+  gender: E_Gender | null;
 }

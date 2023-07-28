@@ -1,34 +1,33 @@
 version: '3'
 
 services:
-  db_postgres:
-    container_name: db_postgres
+  pgdb:
+    container_name: pgdb
     image: postgres:14
     environment:
-      POSTGRES_USER: accountant
-      POSTGRES_PASSWORD: root
-      PGDATA: /data/postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     restart: always
     networks:
       - accountant
     volumes:
-      - postgres:/var/www/accountant/docker-volumes/postgres
+      - dbdatatest:/var/www/accountant/docker-volumes/postgres
     ports:
-      - 127.0.0.1:5432:5432
+      - "5432:5432"
 
-  db_pgadmin:
-    container_name: db_pgadmin
+  pgadmin:
+    container_name: pgadmin
     image: dpage/pgadmin4
+    networks:
+      - accountant
     environment:
       PGADMIN_DEFAULT_EMAIL: ainurikdav@gmail.com
       PGADMIN_DEFAULT_PASSWORD: root
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-      - pgadmin:/var/www/accountant/docker-volumes/pgadmin
+      - pgadmintest:/var/www/accountant/docker-volumes/pgadmin
     ports:
-      - 127.0.0.1:5050:80
-    networks:
-      - accountant
+      - "80:80"
     restart: always
 
 networks:
@@ -36,5 +35,5 @@ networks:
     driver: bridge
 
 volumes:
-  postgres:
-  pgadmin:
+  dbdatatest:
+  pgadmintest:
