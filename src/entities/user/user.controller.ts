@@ -30,15 +30,15 @@ export class UserController {
   //   });
   // }
 
-  // @Get('/:id')
-  // async getUser(@Param('id', ParseIntPipe) id: number, @Res() res: Response) {
-  //   const userData = await this.userService.getUserData(id);
+  @Get('/:id')
+  async getUser(@Param('id', ParseIntPipe) id: number, @Res() res: Response) {
+    const userData = await this.userService.getUserData(id);
 
-  //   return res.send({
-  //     status: 'ok',
-  //     data: userData,
-  //   });
-  // }
+    return res.send({
+      status: 'ok',
+      data: userData,
+    });
+  }
 
   @Post('/')
   async createUser(@Req() req: Request, @Res() res: Response) {
