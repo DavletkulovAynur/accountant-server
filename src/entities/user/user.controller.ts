@@ -10,6 +10,8 @@ import {
   Param,
   ParseIntPipe,
   Body,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { Response, Request } from 'express';
 import { UpdateUserDto } from './dto/updateUser.dto';
@@ -22,15 +24,10 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('/')
-  async getAllUsers(@Res() res: Response) {
-    console.log('res', res);
+  @HttpCode(HttpStatus.OK)
+  async getAllUsers() {
     const users = await this.userService.getAllUsers();
-
-    console.log('users', users);
-    return res.send({
-      status: 'ok',
-      data: users,
-    });
+    return users;
   }
 
   @Get('/:id')
@@ -45,6 +42,7 @@ export class UserController {
 
   @Post('/')
   async createUser(@Req() req: Request, @Res() res: Response) {
+    //TODO: если res удалим возможны ошибки
     await this.userService.createUser(req.body);
     return res.send({ status: 'ok' });
   }
