@@ -42,6 +42,7 @@ export class UserController {
 
   @Post('/')
   async createUser(@Req() req: Request, @Res() res: Response) {
+    console.log('req', req);
     //TODO: если res удалим возможны ошибки
     await this.userService.createUser(req.body);
     return res.send({ status: 'ok' });

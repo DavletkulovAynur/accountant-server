@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  server:
+    build: ./
+    container_name: accountant-server
+    restart: always
+    volumes:
+      - ./src/:/app/src
+    ports:
+      - '4200:4200'
+    depends_on:
+      - pgdb
+    networks:
+      - accountant
   pgdb:
     container_name: pgdb
     image: postgres:14
@@ -11,9 +23,9 @@ services:
     networks:
       - accountant
     volumes:
-      - dbdatatest:/var/www/accountant/docker-volumes/postgres
+      - db:/var/www/accountant/docker-volumes/postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
 
   pgadmin:
     container_name: pgadmin
@@ -25,9 +37,9 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-      - pgadmintest:/var/www/accountant/docker-volumes/pgadmin
+      - pgadmin:/var/www/accountant/docker-volumes/pgadmin
     ports:
-      - "80:80"
+      - '80:80'
     restart: always
 
 networks:
@@ -35,5 +47,5 @@ networks:
     driver: bridge
 
 volumes:
-  dbdatatest:
-  pgadmintest:
+  db:
+  pgadmin:
