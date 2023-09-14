@@ -1,2 +1,6 @@
-node_modules
 Dockerfile
+.Dockerfile.production
+.dockerignore
+node_modules
+npm-debug.log
+dist

@@ -13,7 +13,7 @@ export class AccountantController {
   @Get('/')
   @HttpCode(HttpStatus.OK)
   async getAllOperations() {
-    return { test: 'hello' };
+    return { test: 'he' };
   }
 
   @Post('/create')
