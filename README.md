@@ -1,5 +1,9 @@
-TASKS
+# Accountant server
 
-### Как сохранить данные в базе данных
+### image for production
 
-### networks как влияет на volumes
+```bash
+  docker build --platform linux/amd64 -t server:2.2.0 .
+```
+
+### Develop
