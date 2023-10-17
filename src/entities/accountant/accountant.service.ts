@@ -27,8 +27,9 @@ export class AccountantService {
     return await this.findTransactions(OPERATION_TYPE.Income);
   }
 
-  public async deleteOperation() {
-    // return await this.findTransactions(OPERATION_TYPE.Income);
+  public async deleteOperation(body) {
+    const { operationId } = body;
+    return await this.accountantRepository.delete(operationId);
   }
 
   public async editOperation() {

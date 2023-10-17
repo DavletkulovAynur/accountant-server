@@ -32,7 +32,7 @@ export class AccountantController {
   async getAllIncomeOperations() {
     return await this.AccountantService.getAllIncomeOperations();
   }
-  
+
   @Post('/transactions/create')
   @HttpCode(HttpStatus.OK)
   async createOperations(@Req() req: Request) {
@@ -44,7 +44,7 @@ export class AccountantController {
   @HttpCode(HttpStatus.OK)
   async deleteOperations(@Req() req: Request) {
     const { body } = req;
-    await this.AccountantService.deleteOperation();
+    await this.AccountantService.deleteOperation(body);
   }
 
   @Put('/transactions/edit')
