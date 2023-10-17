@@ -1,5 +1,6 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsIn, IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { OPERATION_TYPE } from './types';
 
 @Entity('accountant')
 export class Accountant {
@@ -19,6 +20,9 @@ export class Accountant {
   date: Date;
 
   @Column({ name: 'operationType', type: 'varchar', nullable: false })
+  @IsIn([OPERATION_TYPE.Income, OPERATION_TYPE.Expence], {
+    message: 'Invalid operation type',
+  })
   operationType: string;
 
   @Column({ name: 'description', type: 'varchar' })
